@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello, world!</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content=""/>
+    <link rel="icon" href="favicon.png">
+    <style>
+        /* For best practice, move CSS below to an external CSS file. */
+        @keyframes fadeinall {
+            0% {
+                opacity: 1;
+            }
+            97% {
+                opacity: 0;
+            }
+            98% {
+                opacity: 0;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                -webkit-transform: translateY(-100%);
+                transform: translateY(-100%);
+                z-index: -1;
+            }
+        }
+
+        #fadein {
+            opacity: 1;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            transform: translateY(0);
+            background-color: #fff;
+            z-index: 999;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation: fadeinall 1s normal both;
+            animation: fadeinall 1s normal both;
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+        }
+
+        html {
+            font-family: "Josefin Slab", Helvetica;
+            background: #fff;
+            background: radial-gradient(ellipse at center, #477ba2 0, #274b70 100%);
+            height: 100%;
+            min-height: 460px;
+            color: #e9e4e7;
+        }
+
+        hgroup {
+            margin-left: -250px;
+            margin-top: -280px;
+            position: absolute;
+            width: 500px;
+            left: 50%;
+            top: 50%;
+        }
+
+        h1, h2, h3, h4, h5 {
+            text-shadow: 3px 3px 5px #1d3b60;
+            text-align: center;
+            margin: auto;
+            font-weight: lighter;
+        }
+
+        h1 {
+            font-size: 78px;
+        }
+
+        h2 {
+            font-size: 68px;
+        }
+
+        h3 {
+            font-size: 85px;
+            font-weight: bolder;
+        }
+
+        h4 {
+            font-size: 90px;
+        }
+
+        h5 {
+            font-size: 40px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #e8bb53;
+            margin: 10px;
+            color: #fff;
+            text-shadow: none;
+            box-shadow: 1px 0 1px #ce9e45, 0 1px 1px #aa7e3b, 2px 1px 1px #ce9e45, 1px 2px 1px #aa7e3b, 3px 2px 1px #ce9e45, 2px 3px 1px #aa7e3b, 4px 3px 1px #ce9e45, 3px 4px 1px #aa7e3b, 5px 4px 1px #ce9e45, 4px 5px 1px #aa7e3b, 6px 5px 1px #ce9e45;
+            cursor: pointer;
+            display: inline-block;
+            box-sizing: border-box;
+            position: relative;
+            user-select: none;
+            border: 0;
+            font-size: 45px;
+            font-weight: 400;
+            font-family: "Josefin Slab", cursive;
+            outline: 0;
+        }
+        button:hover {
+            background-color: #f3c863;
+        }
+        button:active {
+            background-color: #ffdf91;
+        }
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        a:link {
+            color: #d96354;
+        }
+        a:visited {
+            color: #ce9891;
+        }
+    </style>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Josefin+Slab:wght@400&display=swap" rel="stylesheet">
+<div id="fadein"></div>
+<main>
+    <hgroup>
+        <h1> SHOW ME </h1>
+        <h2 id="joint"> A RANDOM </h2>
+        <h3> VOLO </h3>
+        <h4> FANART </h4>
+        <h5>→
+            <button id="button" onclick="goToRandomTweet()">pretty please</button>
+            ←
+        </h5>
+    </hgroup>
+</main>
+<footer>
+    <small>Brought to you by <a href="https://tumblr.com/volostan/">@Volostan</a> with love <3</small></footer>
+</footer>
+
+<script type="text/javascript">
+    window.onload = function () {
+        setTimeout(function () {
+            document.getElementById("fadein").remove();
+        }, 1000);
+    };
+
+    function getRandomTweetId() {
+        return data[Math.floor(Math.random() * data.length)];
+    }
+
+    function getRandomTweetUrl() {
+        let randomTweetId = getRandomTweetId();
+        console.debug(`Id : '${randomTweetId}'`)
+        return "https://twitter.com/volostan/status/" + randomTweetId;
+    }
+
+    function goToRandomTweet() {
+        let randomTweetUrl = getRandomTweetUrl();
+        console.debug(`Heading to [ ${randomTweetUrl} ]...`)
+        // window.location = randomTweetUrl;
+    }
+
+    const data = [
+        "1471165788505661443",
+        "1471170562189926411",
+        "1585193797859811330",
+        "1585291646941499394",
+        "1585341824155103232",
+        "1585341838827085825",
+        "1585375808494804992",
+        "1585555350014627840",
+        "1585570446388465664",
+        "1585570446388465664",
+        "1585749150972669953",
+        "1585980946125553664",
+        "1585980958217424896",
+        "1586091516950646784",
+        "1471171010317758469",
+        "1589626689356959744"
+    ];
+</script>
+</body>
+</html>
