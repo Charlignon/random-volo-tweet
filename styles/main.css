@@ -1,0 +1,236 @@
+/* For best practice, move CSS below to an external CSS file. <- Lmao no */
+@keyframes fadeinall {
+    0% {
+        opacity: 1;
+    }
+    97% {
+        opacity: 0;
+    }
+    98% {
+        opacity: 0;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        z-index: -1;
+    }
+}
+
+#fadein {
+    opacity: 1;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    background-color: #000;
+    z-index: 999;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation: fadeinall 1s normal both;
+    animation: fadeinall 1s normal both;
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+
+html {
+    font-family: "Josefin Slab", Helvetica;
+    background: #fff;
+    background: radial-gradient(ellipse at center, #477ba2 0, #274b70 100%);
+    height: 100%;
+    min-height: 460px;
+    color: #e9e4e7;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+main {
+    height: 100%;
+}
+
+hgroup {
+    margin-left: -250px;
+    margin-top: -280px;
+    position: absolute;
+    width: 500px;
+    left: 50%;
+    top: 50%;
+}
+
+.row {
+    display: flex;
+    height: 100%;
+    flex-wrap: wrap;
+}
+
+@media only screen and (min-width: 1000px) {
+    .column {
+        flex: 50%;
+    }
+
+    .column-small {
+        flex: 30%;
+    }
+
+    #tweet_container > * {
+        float: right;
+    }
+}
+
+@media only screen and (max-width: 999px) {
+    .column {
+        width: 100%;
+    }
+
+    .column-small {
+        text-align: center;
+    }
+    .column-small {
+        margin: 0 auto;
+    }
+
+    #tweet_container > *{
+        margin: 0 auto;
+    }
+}
+
+
+h1, h2, h3, h4, h5 {
+    text-shadow: 3px 3px 5px #1d3b60;
+    text-align: center;
+    margin: auto;
+    font-weight: lighter;
+}
+
+h1 {
+    font-size: 78px;
+}
+
+h2 {
+    font-size: 68px;
+}
+
+h3 {
+    font-size: 85px;
+    font-weight: bolder;
+}
+
+h4 {
+    font-size: 90px;
+}
+
+h5 {
+    font-size: 40px;
+}
+
+button {
+    padding: 10px;
+    background-color: #e8bb53;
+    margin: 10px;
+    color: #fff;
+    text-shadow: none;
+    box-shadow: 1px 0 1px #ce9e45, 0 1px 1px #aa7e3b, 2px 1px 1px #ce9e45, 1px 2px 1px #aa7e3b, 3px 2px 1px #ce9e45, 2px 3px 1px #aa7e3b, 4px 3px 1px #ce9e45, 3px 4px 1px #aa7e3b, 5px 4px 1px #ce9e45, 4px 5px 1px #aa7e3b, 6px 5px 1px #ce9e45;
+    cursor: pointer;
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    user-select: none;
+    border: 0;
+    font-size: 45px;
+    font-weight: 400;
+    font-family: "Josefin Slab", cursive;
+    outline: 0;
+}
+button:nth-of-type(3) {
+    filter: brightness(92%);
+}
+button:nth-of-type(4) {
+    filter: brightness(84%);
+}
+button:nth-of-type(5) {
+    filter: brightness(76%);
+}
+
+button:hover {
+    background-color: #f3c863;
+}
+
+button:active {
+    background-color: #ffdf91;
+}
+
+#twitterIcon {
+    width: 38px;
+    margin-right: 10px;
+    margin-left: 10px;
+    position: relative;
+    top: 7px;
+}
+
+footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+a:link {
+    color: #d96354;
+}
+
+a:visited {
+    color: #ce9891;
+}
+
+
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

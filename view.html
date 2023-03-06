@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Random Volo tweet</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="description" content=""/>
+    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="styles/main.css" media="screen"/>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Josefin+Slab:wght@400&display=swap"
+      rel="stylesheet">
+
+<div id="fadein"></div>
+<main>
+    <script>window.twttr = (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
+            t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function (f) {
+            t._e.push(f);
+        };
+
+        return t;
+    }(document, "script", "twitter-wjs"));</script>
+
+    <div class="row">
+        <div class="column ">
+            <div id="tweet_container"></div>
+        </div>
+        <div class="column-small">
+            <button onclick="copyLink(window.location)">Copy link</button>
+            <button onclick="copyLink(`https://twitter.com/volostan/status/${window.tweet_id}`)"><img id="twitterIcon"
+                                                                                                      src="assets/twitter.png">
+            </button>
+            <br/>
+            <button>
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    Get another Volo</a>
+            </button>
+            <br/>
+            <button onclick="reportMissingTweet()">Report deleted tweet</button>
+        </div>
+    </div>
+</main>
+
+
+<div id="snackbar"></div>
+
+<script>
+    function showToast(message) {
+        var x = document.getElementById("snackbar");
+        x.innerHTML = message;
+        x.className = "show";
+        setTimeout(() => x.className = x.className.replace("show", ""), 3000);
+    }
+
+    twttr.ready(() => {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        console.debug(id);
+        window.tweet_id = id;
+        window.reported = false;
+        twttr.widgets.createTweet(
+            id,
+            document.getElementById('tweet_container'),
+            {
+                theme: 'dark',
+                conversation: 'none',
+                dnt: true,
+            }
+        );
+    })
+
+    function reportMissingTweet() {
+        if (window.reported) {
+            return;
+        }
+        window.reported = true;
+        const request = new XMLHttpRequest();
+        request.open("POST", "https://discord.com/api/webhooks/1082286017509330994/9bU05xL7qThonnLPZme20T9ipscZn49Pj2ZrxYAq_oQ-aqEhrd5qlAVk94c5qF9I6sEI");
+
+        request.setRequestHeader('Content-type', 'application/json');
+
+        const params = {
+            content: `${window.tweet_id} | https://twitter.com/volostan/status/${window.tweet_id}`
+        }
+
+        request.send(JSON.stringify(params));
+        showToast("Thank you for reporting a deleted tweet !")
+        setTimeout(() => window.location = "index.html", 2000);
+    }
+
+    function copyLink(link) {
+        navigator.clipboard.writeText(link);
+        showToast("Link copied to clipboard !")
+    }
+</script>
+</body>
+</html>
