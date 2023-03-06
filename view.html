@@ -34,8 +34,11 @@
     }(document, "script", "twitter-wjs"));</script>
 
     <div class="row">
-        <div class="column ">
-            <div id="tweet_container"></div>
+        <div class="column">
+            <div id="tweet_container"><span id="placeholder"><p>Loading... please wait a few seconds.</p>
+                <p>If nothing is appearing after a few second,<br/> the tweet may have been deleted, or <a
+                        href="https://downdetector.fr/statut/twitter/">Twitter is experiencing an outage</a></p></span>
+            </div>
         </div>
         <div class="column-small">
             <button onclick="copyLink(window.location)">Copy link</button>
