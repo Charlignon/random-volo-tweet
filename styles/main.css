@@ -37,6 +37,12 @@
     animation-delay: 0.3s;
 }
 
+.hidden {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
 html {
     font-family: "Josefin Slab", Helvetica;
     background: #fff;
@@ -178,7 +184,7 @@ button:active {
 }
 
 #twitterIcon {
-    width: 38px;
+    width: 35px;
     margin-right: 10px;
     margin-left: 10px;
     position: relative;
