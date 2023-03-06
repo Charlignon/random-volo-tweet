@@ -70,6 +70,13 @@ hgroup {
     flex-wrap: wrap;
 }
 
+#placeholder {
+    text-align: right;
+    font-size: 20px;
+    padding-right: 15px;
+    width: 50%;
+}
+
 @media only screen and (min-width: 1000px) {
     .column {
         flex: 50%;
@@ -85,6 +92,10 @@ hgroup {
 }
 
 @media only screen and (max-width: 999px) {
+    #placeholder {
+        text-align: center;
+    }
+    
     .column {
         width: 100%;
     }
