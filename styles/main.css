@@ -181,6 +181,8 @@ footer {
     text-align: center;
     font-size: 20px;
     font-weight: bolder;
+    background-color: #ffffff44;
+    border-radius: 2px;
 }
 
 a:link {
