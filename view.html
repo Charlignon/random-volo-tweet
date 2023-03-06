@@ -87,7 +87,7 @@
                 conversation: 'none',
                 dnt: true,
             }
-        );
+        ).then(() => document.getElementById("placeholder").className = "hidden");
     })
 
     function reportMissingTweet() {
