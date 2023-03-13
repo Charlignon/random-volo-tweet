@@ -70,18 +70,16 @@ function switchLang(lang) {
 }
 
 window.addEventListener('load', function () {
-    const lang = localStorage.getItem(LANGUAGE_KEY);
+    const lang = localStorage.getItem(LANGUAGE_KEY) || 'en';
     console.debug("Language: " + lang);
     if (lang) {
         for (let key in window.lang[lang]) {
             const domEl = document.getElementById(key);
             if (domEl) domEl.innerHTML = window.lang[lang][key];
         }
-        const flags = document.getElementById("flags");
-        langs.forEach(l => {
-            if (l !== lang) flags.innerHTML = flags.innerHTML + `<img class="flag" src="assets/${l}.png" alt="${l} flag" onclick="switchLang('${l}')"/>`;
-        });
     }
+    const flags = document.getElementById("flags");
+    langs.forEach(l => {
+        if (l !== lang) flags.innerHTML = flags.innerHTML + `<img class="flag" src="assets/${l}.png" alt="${l} flag" onclick="switchLang('${l}')"/>`;
+    });
 }, false);
-
-
