@@ -7,6 +7,7 @@
     <meta name="description" content=""/>
     <link rel="icon" href="assets/favicon.png">
     <link rel="stylesheet" type="text/css" href="styles/main.css" media="screen"/>
+    <script type="text/javascript" src="data/lang.js"></script>
 </head>
 <body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Josefin+Slab:wght@400&display=swap"
       rel="stylesheet">
 
-<div id="fadein"></div>
+<div id="flags"></div>
 <main>
     <script>window.twttr = (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0],
@@ -41,31 +42,36 @@
             </div>
         </div>
         <div class="column-small">
-            <button onclick="copyLink(window.location)">Copy link</button>
+            <button onclick="copyLink(window.location)" id="copy">Copy link</button>
             <button onclick="copyLink(`https://twitter.com/volostan/status/${window.tweet_id}`)"><img id="twitterIcon"
-                                                                                                      src="assets/twitter.png">
+                                                                                                      src="assets/twitter.png"
+                                                                                                      alt="Twitter logo">
             </button>
             <br/>
             <button>
-                <a href="index.html" style="text-decoration: none; color: inherit;">
+                <a href="index.html" style="text-decoration: none; color: inherit;" id="another">
                     Get another Volo</a>
             </button>
             <br/>
-            <button onclick="reportMissingTweet()">Report deleted tweet</button>
+            <button onclick="reportMissingTweet()" id="report">Report deleted tweet</button>
             <br/>
-            <div style="margin-left:15px;">Reports may take a while to be processed.</div>
+            <div style="margin-left:15px;" id="reportInfo">Reports may take a while to be processed.</div>
             <br>
             <div style="height: 100px"/>
         </div>
     </div>
 </main>
 <footer>
-    <small>Brought to you by <a href="https://tumblr.com/volostan/">@Volostan</a> with love <3</small></footer>
+    <small id="footer">Brought to you by <a href="https://tumblr.com/volostan/">@Volostan</a> with love <3</small>
+</footer>
 </footer>
 
 <div id="snackbar"></div>
 
 <script>
+    const lang = localStorage.getItem('lang');
+    const {linkCopied, deleted} = window.lang[lang];
+
     function showToast(message) {
         var x = document.getElementById("snackbar");
         x.innerHTML = message;
@@ -91,27 +97,29 @@
     })
 
     function reportMissingTweet() {
+        const idPart2 = '_hrcz87EvLOyeYD6pc';
         if (window.reported) {
             return;
         }
         window.reported = true;
         const request = new XMLHttpRequest();
-        request.open("POST", "https://discord.com/api/webhooks/1084837895845724201/rRye2f5ob0GPOeA8Xzv8BcIyq-bsnBMPvydqiGYETvHZFVp192ggH8CqQuD1Yo3EzDMp");
+        const idPart1 = 'Gxdn8nNK28kQs0xpsBiN6C1v0LAi2gTevzMFRcPFGEBi6GA3Mf';
+        request.open("POST", `https://discord.com/api/webhooks/1084871356178518109/${idPart1}${idPart2}`);
 
         request.setRequestHeader('Content-type', 'application/json');
 
         const params = {
             content: `${window.tweet_id} | https://twitter.com/volostan/status/${window.tweet_id}`
-        }
+        };
 
         request.send(JSON.stringify(params));
-        showToast("Thank you for reporting a deleted tweet !")
+        showToast(deleted || "Thank you for reporting a deleted tweet !")
         setTimeout(() => window.location = "index.html", 2000);
     }
 
     function copyLink(link) {
         navigator.clipboard.writeText(link);
-        showToast("Link copied to clipboard !")
+        showToast(linkCopied || "Link copied to clipboard !")
     }
 </script>
 </body>

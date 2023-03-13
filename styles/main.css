@@ -61,11 +61,22 @@ main {
     height: 100%;
 }
 
-hgroup {
-    margin-left: -250px;
-    margin-top: -280px;
+#flags {
     position: absolute;
-    width: 500px;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+.flag {
+    height: 40px;
+    margin-right: 10px;
+}
+
+hgroup {
+    margin-left: -265px;
+    margin-top: -300px;
+    position: absolute;
+    width: 530px;
     left: 50%;
     top: 50%;
 }
