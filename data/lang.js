@@ -58,11 +58,27 @@ window.lang = {
         another: '別のものを見る',
         report: '削除されたツイートを報告',
         reportInfo: 'レポートの処理には時間がかかる場合があります。',
+    },
+    de: {
+        line1: 'ZEIG MIR',
+        line2: 'EIN BILD',
+        line3: 'VON VOLO',
+        line4: 'ZUFÄLLIGES',
+        button: 'BITTE',
+        footer: 'Mit Liebe von <a href="https://tumblr.com/volostan/">@Volostan</a> zu Ihnen gebracht <3',
+        // View
+        placeholder: "<p>Wird geladen... Bitte warten Sie ein paar Sekunden.</p>\n" +
+            "<p>Wenn nach einigen Sekunden nichts angezeigt wird,<br/> wurde entweder der Tweet gelöscht oder <a\n" +
+            "href=\"https://downdetector.fr/statut/twitter/\">Twitter ist derzeit nicht verfügbar</a></p>",
+        copy: 'Link kopieren',
+        another: 'Holen ein anderes',
+        report: 'Einen Tweet melden',
+        reportInfo: 'Die Bearbeitung der Meldungen kann einige Zeit in Anspruch nehmen.。',
     }
 };
 
 const LANGUAGE_KEY = 'lang'
-const langs = ['fr', 'jp', 'en', 'es'];
+const langs = ['fr', 'jp', 'en', 'es', 'de'];
 
 function switchLang(lang) {
     localStorage.setItem(LANGUAGE_KEY, lang);
