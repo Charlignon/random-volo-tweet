@@ -70,7 +70,7 @@
 
 <script>
     const lang = localStorage.getItem('lang');
-    const {linkCopied, deleted} = window.lang[lang];
+    const {linkCopied, deleted} = window.lang[lang] || {};
 
     function showToast(message) {
         var x = document.getElementById("snackbar");
