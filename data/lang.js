@@ -63,9 +63,9 @@ window.lang = {
         line1: 'ZEIG MIR',
         line2: 'EIN BILD',
         line3: 'VON VOLO',
-        line4: 'ZUFÄLLIGES',
-        button: 'BITTE',
-        footer: 'Mit Liebe von <a href="https://tumblr.com/volostan/">@Volostan</a> zu Ihnen gebracht <3',
+        line4: 'ZUFÄLLIG',
+        button: 'Bitte',
+        footer: 'Mit Liebe von <a href="https://tumblr.com/volostan/">@Volostan</a> zu Ihnen gebracht <3 Danke <a href="https://tumblr.com/TheMarilus/">@TheMarilus</a> für die Übersetzung',
         // View
         placeholder: "<p>Wird geladen... Bitte warten Sie ein paar Sekunden.</p>\n" +
             "<p>Wenn nach einigen Sekunden nichts angezeigt wird,<br/> wurde entweder der Tweet gelöscht oder <a\n" +
